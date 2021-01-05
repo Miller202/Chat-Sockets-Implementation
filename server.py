@@ -2,11 +2,22 @@
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 
+clients = {}
+addresses = {}
+
+HOST = "localhost"
+PORT = 33000
+BUFF_SIZE = 1024
+ADDRESS = (HOST, PORT)
+
+server_socket = socket(AF_INET, SOCK_STREAM)
+server_socket.bind(ADDRESS)
+
 
 def accept_connections():
     """Sets up handling for incoming clients."""
     while True:
-        client, client_address = SERVER.accept()
+        client, client_address = server_socket.accept()
         print("%s:%s está online." % client_address)
         client.send(bytes("Digite o seu nome:", "utf8"))
         addresses[client] = client_address
@@ -45,21 +56,10 @@ def connect_client(client):  # Takes client socket as argument.
             break
 
 
-clients = {}
-addresses = {}
-
-HOST = "localhost"
-PORT = 33000
-BUFF_SIZE = 1024
-ADDRESS = (HOST, PORT)
-
-SERVER = socket(AF_INET, SOCK_STREAM)
-SERVER.bind(ADDRESS)
-
 if __name__ == "__main__":
-    SERVER.listen(5)
+    server_socket.listen(5)
     print("Aguardando conexão...")
-    ACCEPT_THREAD = Thread(target=accept_connections)
-    ACCEPT_THREAD.start()
-    ACCEPT_THREAD.join()
-SERVER.close()
+    accept_thread = Thread(target=accept_connections)
+    accept_thread.start()
+    accept_thread.join()
+server_socket.close()
