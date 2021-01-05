@@ -38,17 +38,17 @@ def connect_client(client):  # Takes client socket as argument.
 
     welcome = "Bem vindo "
     client.send(bytes(welcome + name + "!", "utf8"))
-    client.send(bytes("O envio de mensagens foi ativado!", "utf8"))
+    client.send(bytes("O chat foi ativado!", "utf8"))
     msg = "%s entrou no chat!" % name
     server_broadcast(bytes(msg, "utf8"))
     clients[client] = name
 
     while True:
         msg = client.recv(BUFF_SIZE)
-        if msg != bytes("{quit}", "utf8"):
+        if msg != bytes("{disconnect}", "utf8"):
             server_broadcast(msg, name + "")
         else:
-            client.send(bytes("{quit}", "utf8"))
+            client.send(bytes("{disconnect}", "utf8"))
             client.close()
 
             del clients[client]
