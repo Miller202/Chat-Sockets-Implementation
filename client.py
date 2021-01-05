@@ -16,6 +16,31 @@ client_socket = socket(AF_INET, SOCK_STREAM)
 client_socket.connect(ADDRESS)
 
 
+def receive_message():
+    """Control incoming messages."""
+    while True:
+        try:
+            msg = client_socket.recv(BUFF_SIZE).decode("utf8")  # recebe a mensagem do socket
+            split_msg = msg.split("@")
+            print(split_msg)
+
+            if len(split_msg) == 1:
+                list_msg.insert(tkinter.END, msg)
+                print(msg)
+
+            if len(split_msg) > 1:
+                receiver = split_msg[1]  # segundo input, destinatário.
+                print(receiver)
+                if receiver == client_name.get():
+                    print(split_msg)
+                    list_msg.insert(tkinter.END, "De: " + split_msg[0])  # primeiro input, seu nome.
+                    list_msg.insert(tkinter.END, "Assunto: " + split_msg[2])  # terceiro input, assunto.
+                    list_msg.insert(tkinter.END, "Mensagem: " + split_msg[3])  # terceiro input, mensagem.
+
+        except OSError:  # client has left the chat
+            break
+
+
 # Configure tkinter
 window = tkinter.Tk()
 window.title("Client")
@@ -25,7 +50,6 @@ client_name = tkinter.StringVar()
 client_receiver = tkinter.StringVar()
 client_subject = tkinter.StringVar()
 client_msg = tkinter.StringVar()
-
 
 # Labels
 label_name = tkinter.Label(window, text="Seu nome:")
@@ -39,7 +63,6 @@ frame_msg = tkinter.Frame(window)
 bar = tkinter.Scrollbar(frame_msg)
 list_msg = tkinter.Listbox(window, yscrollcommand=bar.set)
 
-
 # Inputs
 input_name = tkinter.Entry(window, textvariable=client_name)
 input_name.bind("<Return>", )
@@ -49,7 +72,6 @@ input_subject = tkinter.Entry(window, textvariable=client_subject)
 input_subject.bind("<Return>", )
 input_msg = tkinter.Entry(window, textvariable=client_msg)
 input_msg.bind("<Return>", )
-
 
 # Grids
 label_name.grid(row=1, column=1)
@@ -67,6 +89,9 @@ input_receiver.grid(row=2, column=2)
 input_subject.grid(row=3, column=2)
 input_msg.grid(row=4, column=2)
 
+# Start thread
+receive_thread = Thread(target=receive_message)
+receive_thread.start()
 
 # Starts GUI execution.
 window.mainloop()
