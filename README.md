@@ -8,8 +8,8 @@ Projeto final da disciplina de Redes de computadores.
 Tutorial para utilizar o chat:
 
 * 1 - Execute o arquivo `server.py`;
-* 2 - Execute os arquivos `client.py` e `client_2.py`;
-* 3 - Cadastre o nome de usuário no cliente 1 e cliente 2 para ativar o envio de mensagens(emails);
+* 2 - Execute os arquivos `client.py` e `client_2.py`, ambos vão iniciar uma interface Tkinter;
+* 3 - Cadastre o nome de usuário nos dois clientes (botão: enviar nome) para ativar o envio de mensagens;
 * 4 - Agora você pode trocar mensagens(emails) de um cliente para o outro, ou para si mesmo!
 * 5 - No campo destinatário basta inserir o nome do usuário que vai receber o email;
 * 6 - O campo assunto é opcional e o campo mensagem é obrigatório.
