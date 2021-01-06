@@ -78,6 +78,7 @@ def close_page():
 # Configure tkinter
 window = tkinter.Tk()
 window.title("Client")
+window.configure(bg="#A9A9A9")
 
 # Variables declaration
 client_name = tkinter.StringVar()
@@ -87,36 +88,39 @@ client_msg = tkinter.StringVar()
 
 
 # Labels
-label_name = tkinter.Label(window, text="Digite seu nome:")
-label_receiver = tkinter.Label(window, text="Destinatário")
-label_subject = tkinter.Label(window, text="Assunto:")
-label_msg = tkinter.Label(window, text="Mensagem:")
-label_inbox = tkinter.Label(window, text="Caixa de entrada:")
+label_name = tkinter.Label(window, text="Digite seu nome:", height=2, bg="#A9A9A9", font="Verdana 11 bold")
+label_receiver = tkinter.Label(window, text="Destinatário", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
+label_subject = tkinter.Label(window, text="Assunto:", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
+label_msg = tkinter.Label(window, text="Mensagem:", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
+label_inbox = tkinter.Label(window, text="Caixa de entrada:", height=1, bg="#A9A9A9", font="Verdana 11 bold")
 
 
 # Display messages in the inbox
 frame_msg = tkinter.Frame(window)
 bar = tkinter.Scrollbar(frame_msg)
-list_msg = tkinter.Listbox(window, yscrollcommand=bar.set)
+list_msg = tkinter.Listbox(window, yscrollcommand=bar.set, width=40, height=10, border=2, font="Verdana 11 bold")
 
 
 # Inputs
-input_name = tkinter.Entry(window, textvariable=client_name)
+input_name = tkinter.Entry(window, textvariable=client_name, font="Verdana 11 bold")
 input_name.bind("<Return>", )
-input_receiver = tkinter.Entry(window, textvariable=client_receiver)
+input_receiver = tkinter.Entry(window, textvariable=client_receiver, font="Verdana 11 bold")
 input_receiver.bind("<Return>", )
-input_subject = tkinter.Entry(window, textvariable=client_subject)
+input_subject = tkinter.Entry(window, textvariable=client_subject, font="Verdana 11 bold")
 input_subject.bind("<Return>", )
-input_msg = tkinter.Entry(window, textvariable=client_msg)
+input_msg = tkinter.Entry(window, textvariable=client_msg, font="Verdana 11 bold")
 input_msg.bind("<Return>", )
 
 window.protocol("WM_DELETE_WINDOW", close_page)
 
 
 # Buttons
-b_submit_name = tkinter.Button(window, command=submit_name, text="Enviar nome")
-b_submit = tkinter.Button(window, command=submit, text="Enviar Email")
-b_disconnect = tkinter.Button(window, command=disconnect, text="Desconectar")
+b_submit_name = tkinter.Button(window, command=submit_name, text="Enviar nome", border=2, font="Verdana 11 bold",
+                               bg="#BEBEBE")
+b_submit = tkinter.Button(window, command=submit, text="Enviar Email", border=2, font="Verdana 11 bold",
+                          bg="#BEBEBE")
+b_disconnect = tkinter.Button(window, command=disconnect, text="Desconectar", border=2, font="Verdana 11 bold",
+                              bg="#BEBEBE")
 
 
 # Grids
@@ -126,9 +130,9 @@ label_subject.grid(row=4, column=1, sticky="w")
 label_msg.grid(row=5, column=1, sticky="w")
 label_inbox.grid(row=9, column=1)
 
-frame_msg.grid()
 bar.grid()
 list_msg.grid(row=10, column=1, columnspan=2)
+frame_msg.grid()
 
 input_name.grid(row=1, column=2)
 input_receiver.grid(row=3, column=2)
@@ -137,7 +141,7 @@ input_msg.grid(row=5, column=2)
 
 b_submit_name.grid(row=2, column=2, sticky="n")
 b_submit.grid(row=6, column=2, sticky="n")
-b_disconnect.grid(row=14, column=1, columnspan=3)
+b_disconnect.grid(row=11, column=1, columnspan=3)
 
 
 # Start thread
