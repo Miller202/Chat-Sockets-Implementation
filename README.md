@@ -1,6 +1,6 @@
-# Chat-Sockets-Implementation
+# Chat-With-Sockets
 
-Projeto final da disciplina de Redes de computadores.
+Projeto final de Redes de computadores (COMP368-M).
 
 * Implementação de um chat com sockets de rede (baseado no protocolo SMTP).
 * Dupla: Michael Miller Rodrigues Cardoso, Michel Thomas Gomes Lins.
