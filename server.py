@@ -6,7 +6,7 @@ clients = {}
 addresses = {}
 
 HOST = "localhost"
-PORT = 33000
+PORT = 55000
 BUFF_SIZE = 1024
 ADDRESS = (HOST, PORT)
 

@@ -3,9 +3,9 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 
 HOST = "localhost"
-PORT = 33000
+PORT = 55000
 if not PORT:
-    PORT = 33000
+    PORT = 55000
 else:
     PORT = int(PORT)
 
