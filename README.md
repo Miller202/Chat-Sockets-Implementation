@@ -16,4 +16,5 @@ Tutorial para utilizar o chat:
 * 7 - As mensagens(emails) são listadas na caixa de entrada.
 
 Obs: A implementação suporta N clientes, caso queira testar com um número maior, basta duplicar o arquivo `client.py`.
+
 Obs2: Foi aplicado o uso de threads.
