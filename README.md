@@ -15,4 +15,5 @@ Tutorial para utilizar o chat:
 * 6 - O campo assunto é opcional e o campo mensagem é obrigatório.
 * 7 - As mensagens(emails) são listadas na caixa de entrada.
 
-Obs: Foi aplicado o uso de threads.
+Obs: A implementação suporta N clientes, caso queira testar com um número maior, basta duplicar o arquivo `client.py`.
+Obs2: Foi aplicado o uso de threads.
