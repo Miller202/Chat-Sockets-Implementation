@@ -89,7 +89,7 @@ client_msg = tkinter.StringVar()
 
 # Labels
 label_name = tkinter.Label(window, text="Digite seu nome:", height=2, bg="#A9A9A9", font="Verdana 11 bold")
-label_receiver = tkinter.Label(window, text="Destinatário", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
+label_receiver = tkinter.Label(window, text="Destinatário:", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
 label_subject = tkinter.Label(window, text="Assunto:", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
 label_msg = tkinter.Label(window, text="Mensagem:", width=10, height=2, bg="#A9A9A9", font="Verdana 11 bold")
 label_inbox = tkinter.Label(window, text="Caixa de entrada:", height=1, bg="#A9A9A9", font="Verdana 11 bold")
